@@ -25,6 +25,10 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "SDKs",
+      "url": "sdks"
     }
   ],
   "navigation": [
@@ -34,7 +38,22 @@
     },
     {
       "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "pages": [
+        "essentials/markdown",
+        "essentials/code",
+        "essentials/images",
+        "essentials/settings",
+        "essentials/navigation"
+      ]
+    },
+    {
+      "group": "lawg.py",
+      "pages": [
+        "sdks/lawgpy/introduction",
+        "sdks/lawgpy/usage",
+        "sdks/lawgpy/async-usage",
+        "sdks/lawgpy/logging-usage"
+      ]
     },
     {
       "group": "API Documentation",
