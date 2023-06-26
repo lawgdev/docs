@@ -3,14 +3,93 @@ title: "Introduction"
 description: "Introduction to lawg.py"
 ---
 
+lawg.py is a Python library used for interacting with lawg's API to create events, application logs, and insights.
+Both async and sync versions of the library are available.
+
 ## Requirements
 
-todo: Requirements
+lawg.py requires Python 3.7 or higher and is operating system agnostic.
 
 ## Installation
 
-todo: Installation
+lawg.py can be found on PyPI and installed with pip.
+
+```sh
+pip install lawg
+```
+
+Add the `-U` flag to upgrade an existing installation.
+
+```sh
+pip install -U lawg
+```
+
+If you're planning to contribute to lawg.py, the [poetry](https://python-poetry.org) package manager is used internally.
+you can install the development dependencies from the cloned repository.
+
+```sh
+git clone https://github.com/lawgdev/lawg.py.git
+cd lawg.py
+poetry install
+```
 
 ## Quick Start
 
-todo: Quick Start
+after importing lawg.py,
+`lawg.Client`, `lawg.AsyncClient`, and `lawg.Handler`
+are available for immediate use.
+
+for demonstration purposes, assume the following variables are valid constant strings.
+
+```python
+import os
+API_TOKEN = os.getenv("LAWG_API_TOKEN")
+PROJECT = os.getenv("LAWG_PROJECT")
+FEED = os.getenv("LAWG_FEED")
+```
+
+to create an event, use the `lawg.Client.event` method.
+
+```python
+import lawg
+client = lawg.Client(token=API_TOKEN, project=PROJECT)
+client.event(
+    feed=FEED,
+    title="User Signed Up",
+    description="A new user has signed up for the service!",  # optional
+    emoji="🎉",  # optional
+)
+
+```
+
+if the feed will remain the same across multiple events,
+a feed object can be created.
+
+```py
+import lawg
+
+client = lawg.Client(token=API_TOKEN, project=PROJECT)
+feed = client.feed(FEED)
+
+feed.event(
+    title="User Signed Up",
+    description="A new user has signed up for the service!",  # optional
+    emoji="🎉",  # optional
+)
+```
+
+A similar process can be used to create an insight.
+
+```py
+import lawg
+
+client = lawg.Client(token=API_TOKEN, project=PROJECT)
+client.insight(
+    title="User Count",
+    description="The number of users on the service.",
+    emoji="👥",
+    value=1,
+)
+```
+
+To see more advanced usage, check out the [Usage](/sdks/lawgpy/usage) section.
