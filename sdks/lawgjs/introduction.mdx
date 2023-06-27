@@ -1,0 +1,49 @@
+---
+title: "Introduction"
+description: "Lawg.js is a JavaScript library specifically built for interacting with lawg's API asynchronously."
+---
+
+## Installation
+
+<CodeGroup>
+
+```bash npm
+npm i @lawgdev/js
+```
+
+```bash yarn
+yarn add @lawgdev/js
+```
+
+</CodeGroup>
+
+## Usage
+
+### Import Library
+
+```ts
+import Lawg from '@lawgdev/js';
+```
+
+### Initialization
+
+```ts
+const lawg = new Lawg({
+  token: process.env.LAWG_TOKEN, // ex: lawg_xxxxxxxxxxxxxxxxx
+  project: "my-cool-project",
+  ua: req.headers["user-agent"], // Optional
+});
+```
+
+## Contributing
+
+If you're planning to contribute to lawg.js, we use [Yarn](https://yarnpkg.com/) as our package manager.
+Get started within a few seconds by following these steps:
+
+```sh
+git clone https://github.com/lawgdev/lawg.js.git
+cd lawg.js
+yarn install
+```
+
+To learn how to get started, check out the [Events](/sdks/lawgjs/events) or [Insights](/sdks/lawgjs/insights) sections.

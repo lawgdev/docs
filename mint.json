@@ -47,6 +47,14 @@
       ]
     },
     {
+      "group": "lawg.js",
+      "pages": [
+        "sdks/lawgjs/introduction",
+        "sdks/lawgjs/events",
+        "sdks/lawgjs/insights"
+      ]
+    },
+    {
       "group": "lawg.py",
       "pages": [
         "sdks/lawgpy/introduction",

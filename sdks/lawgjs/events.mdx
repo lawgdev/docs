@@ -1,0 +1,56 @@
+---
+title: "Events"
+description: "Learn how to create an event using Lawg.js in < 1 minute"
+---
+
+### Fetching all Feed Events
+
+```ts
+await lawg.feed("orders-shipped").fetchEvents();
+```
+
+### Creating a Event
+
+```ts
+await lawg.feed("orders-shipped").event({
+  title: "Order Shipped",
+  description: "John's order has been shipped! (Order #10403)",
+  emoji: "🚚", // or :truck:
+  metadata: {
+    ua: req.headers["user-agent"], // Optional (overides UA set in initialization)
+    tags: {
+      "customer-id": 1234,
+      "customer-email": "johnny@lawg.dev",
+    }, // Optional
+  },
+  notify: true, // Optional (defaults to false)
+  timestamp: "2023-06-22T13:42:55.789Z", // Optional
+});
+```
+
+### Updating a Event
+
+```ts
+await lawg.feed("orders-shipped").editEvent({
+  id: "log_xxxxxxxxxxxxxx",
+  title: "Order Returned", // Optional
+  description:
+    "John's order has been returned, it will no longer ship! (Order #10403)", // Optional
+  emoji: "🚚", // or :truck: (Optional)
+  metadata: {
+    tags: {
+      "customer-id": 1234,
+      "customer-email": "johnathan@lawg.dev",
+    }, // Optional
+  },
+  timestamp: "2023-06-15T13:42:55.789Z", // Optional
+});
+```
+
+### Deleting a Event
+
+```ts
+await lawg.feed("orders-shipped").deleteEvent({
+  id: "log_xxxxxxxxxxxxxx",
+});
+```

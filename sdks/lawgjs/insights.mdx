@@ -1,0 +1,47 @@
+---
+title: "Insights"
+description: "Learn how to create an insight using Lawg.js in < 1 minute"
+---
+
+### Creating a Insight
+
+```ts
+await lawg.insight({
+  title: "Users Joined",
+  emoji: "👤" // or :bust_in_silhouette: (Optional)
+  value: 250,
+});
+```
+
+### Updating a Insight
+
+You may set `emoji: ":your_emoji:"` in any of the fields below when updating an insight (optional).
+
+#### Setting a Insight's Value
+
+```ts
+await lawg.setInsight({
+  id: "insight_xxxxxxxxxxxxxx",
+  set: 150, // Overides initial value (Now: 150, Before: 250)
+});
+```
+
+#### Incrementing a Insight
+
+##### Positive Increments
+
+```ts
+await lawg.incInsight({
+  id: "insight_xxxxxxxxxxxxxx",
+  increment: 150, // Increments initial value (Now: 400, Before: 250)
+});
+```
+
+##### Negative Increments
+
+```ts
+await lawg.incInsight({
+  id: "insight_xxxxxxxxxxxxxx",
+  increment: -150, // Increments initial value (Now: 0, Before: 250)
+});
+```
