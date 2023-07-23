@@ -1,0 +1,132 @@
+---
+title: "Create Project"
+api: "POST https://api.lawg.dev/v1/projects"
+description: "This endpoint creates a new project"
+---
+
+<Warning>You must be authenticated to access this route</Warning>
+
+### Body
+
+<ParamField body="name" type="string" required>
+  The name of the project
+</ParamField>
+
+<ParamField body="namespace" type="string" required>
+  The namespace of the project (this is unique)
+</ParamField>
+
+<ParamField body="icon" type="string">
+  Base64 encoded icon for the project
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful. `true` if successful, `false` if
+  not.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+
+The contents of the data object
+
+<Expandable title="Toggle object">
+
+<ResponseField name="id" type="string">
+  The id of the project (`project_xxxxx`)
+</ResponseField>
+
+<ResponseField name="namespace" type="string">
+  The namespace of the project
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  The name of the project
+</ResponseField>
+
+<ResponseField name="icon" type="string | null">
+  The icon URL to our CDN of the project
+</ResponseField>
+
+<ResponseField name="tier" type="number">
+  The tier of the project
+</ResponseField>
+
+<ResponseField name="stripe_id" type="string | null">
+  The stripe id of the project
+</ResponseField>
+
+<ResponseField name="feeds" type="array">
+```json
+[{
+  "id": "feed_xxxx",
+  "name": "",
+  "description": "", // or null
+  "emoji": "", // or null
+  "type": 0, // 0 = APPLICATION, 1 = EVENTS
+}]
+```
+</ResponseField>
+
+<ResponseField name="members" type="array">
+```json
+[{
+  "id": "user_xxxxx",
+  "username": "",
+  "icon": "", // or null
+}]
+```
+</ResponseField>
+
+</Expandable>
+
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.lawg.dev/v1/projects' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "My Project",
+  "namespace": "my-project",
+  "icon": "base64 encoded icon"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "project_xxx",
+    "namespace": "my-project",
+    "name": "My Project",
+    "icon": "https://cdn.lawg.dev/projects/project_xxx.png",
+    "tier": 0,
+    "stripe_id": null,
+    "feeds": [
+      {
+        "id": "feed_xxx",
+        "name": "My Feed",
+        "description": null,
+        "emoji": null,
+        "type": 0
+      }
+    ],
+    "members": [
+      {
+        "id": "user_xxx",
+        "username": "john",
+        "icon": null
+      }
+    ]
+  }
+}
+```
+
+</ResponseExample>

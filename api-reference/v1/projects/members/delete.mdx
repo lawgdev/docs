@@ -1,0 +1,25 @@
+---
+title: "Remove User"
+api: "DELETE https://api.lawg.dev/v1/projects/:namespace/members/:username"
+description: "Remove User from Project"
+---
+
+<Warning>You must be authenticated to access this route</Warning>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request DELETE 'https://api.lawg.dev/v1/projects/:namespace/members/:username' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <token>'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```http Response
+204 No Content
+```
+
+</ResponseExample>

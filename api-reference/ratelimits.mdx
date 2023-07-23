@@ -1,0 +1,32 @@
+---
+title: "Rate Limit"
+description: "Information on how lawg rate limits."
+---
+
+Rate limits are dependent on your plan and are subject to change. If you need a higher rate limit, please contact us at support@lawg.dev or join our Discord.
+
+## Basic
+
+Some routes have different rate limits than others. Namely `POST log` and `POST event`, they have a higher rate limit than the rest of the routes, to allow for more logging.
+
+Here is a table of the rate limits:
+| Tier | Rate Limit |
+| --- | --- |
+| Free | 100 requests per minute |
+| Pro | 1,000 requests per minute |
+| Startup | 5,000 requests per minute |
+| Enterprise | 10,000 requests per minute |
+
+## Example response
+
+Generally, the response will look like this:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "rate_limit_exceeded",
+    "message": "You are being rate limited."
+  }
+}
+```

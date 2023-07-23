@@ -1,0 +1,34 @@
+---
+title: "Errors"
+description: "Information on how lawg responds with errors."
+---
+
+When lawg returns errors, we do it in a specific schema to help the end developer interacting with the API have a guessable and easy to understand error.
+
+## Schema
+
+Typically, an error will look like this
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "code",
+    "message": "message"
+  }
+}
+```
+
+## Codes
+
+Here is a list of all the error codes that lawg can return.
+
+| Code                    | Description                                           |
+| ----------------------- | ----------------------------------------------------- |
+| `rate_limit_exceeded`   | You are being rate limited.                           |
+| `conflict`              | The resource you are trying to create already exists. |
+| `not_found`             | The resource you are trying to access does not exist. |
+| `bad_request`           | The request you sent was malformed.                   |
+| `unauthorized`          | The request you sent was unauthorized.                |
+| `internal_server_error` | An internal server error occurred.                    |
+| `forbidden`             | You are not allowed to access this resource.          |

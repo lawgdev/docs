@@ -1,0 +1,61 @@
+---
+title: "Introduction to Projects"
+description: "Project routes for lawg's API"
+---
+
+## Schema
+
+Here is what a project will look like
+
+```typescript
+{
+  id: "project_xxxx";
+  namespace: string;
+  name: string;
+  icon: string | null;
+  tier: number;
+  stripe_id?: string | null;
+  feeds: {
+    id: "feed_xxxx";
+    project_id: "project_xxxx";
+    name: string;
+    description: string | null;
+    emoji: string | null;
+    type: FeedType;
+    order: number;
+    muted: boolean;
+  }[];
+  members: {
+    id: "user_xxxxx";
+    username: string;
+    icon: string | null;
+    email: string;
+  }[];
+};
+
+enum ProjectTier {
+  FREE,
+  PRO,
+  SCALE,
+  ENTERPRISE,
+}
+```
+
+## Namespaces
+
+Namespaces on projects are unique identifiers for a project. They are used in the URL for the project, and are used in the API to identify a project.
+
+Instead of referencing a project's ID which isn't very URL friendly in terms of length, you can refernece the namespace.
+
+## Project Tiers
+
+Project tiers are identified as a number from an enum. The enum is as follows:
+
+```typescript
+enum ProjectTier {
+  FREE, // 0
+  PRO, // 1
+  SCALE, // 2
+  ENTERPRISE, // 3
+}
+```

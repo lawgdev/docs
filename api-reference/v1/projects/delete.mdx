@@ -1,0 +1,30 @@
+---
+title: "Delete Project"
+api: "DELETE https://api.lawg.dev/v1/projects/:namespace"
+description: "Delete a project"
+---
+
+<Warning>You must be authenticated to access this route</Warning>
+<Warning>You can not use an API token to access this route</Warning>
+<Warning>You must be the owner of the project to delete it.</Warning>
+<Info>
+  If you have an active Stripe subscription it will automatically be cancelled.
+</Info>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request DELETE 'https://api.lawg.dev/v1/projects/:namespace' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <token>'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```http Response
+204 No Content
+```
+
+</ResponseExample>

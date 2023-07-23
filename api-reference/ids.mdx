@@ -1,0 +1,39 @@
+---
+title: "IDs"
+description: "How lawg handles ID's."
+---
+
+Under the hood, lawg uses [pika-id](https://github.com/hopinc/pika-id) to generate ID's.
+
+They look like this
+
+```bash
+prefix_xxxxxxxx
+```
+
+and secure ID's look like this
+
+```bash
+prefix_s_xxxxxx
+```
+
+You can find more information about Pika IDs and how you can decode them to gain information about the ID [here](https://github.com/hopinc/pika-id)
+
+You can define lawg ID's like this
+
+```ts
+type PikaIds =
+  | "user"
+  | "project"
+  | "feed"
+  | "event"
+  | "lawg"
+  | "device"
+  | "session"
+  | "pm" // project member, used internally
+  | "log"
+  | "comment"
+  | "activity";
+
+type Id<T extends PikaIds> = `${T}_${string}`;
+```

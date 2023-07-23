@@ -1,0 +1,108 @@
+---
+title: "Update Project"
+api: "PATCH https://api.lawg.dev/v1/projects/:namespace"
+description: "This endpoint allows you to update specific properties of a project identified by its namespace."
+---
+
+<Warning>You must be authenticated to access this route</Warning>
+
+Body
+
+<ParamField body="name" type="string" optional>
+  The updated name of the project.
+</ParamField>
+<ParamField body="namespace" type="string" optional>
+  The updated namespace of the project (this must still be unique).
+</ParamField>
+<ParamField body="icon" type="string" optional>
+  Base64 encoded icon for the project. The icon must start with "data:image/png;base64,".
+</ParamField>
+Response
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful. `true` if successful, `false` if not.
+</ResponseField>
+<ResponseField name="data" type="object">
+The updated project data.
+
+<Expandable title="Toggle object">
+<ResponseField name="id" type="string">
+  The id of the project (`project_xxxxx`)
+</ResponseField>
+<ResponseField name="namespace" type="string">
+  The namespace of the project
+</ResponseField>
+<ResponseField name="name" type="string">
+  The updated name of the project
+</ResponseField>
+<ResponseField name="icon" type="string | null">
+  The icon URL to our CDN of the project
+</ResponseField>
+<ResponseField name="tier" type="number">
+  The tier of the project
+</ResponseField>
+<ResponseField name="stripe_id" type="string | null">
+  The stripe id of the project
+</ResponseField>
+<ResponseField name="feeds" type="array">
+```json
+[{
+  "id": "feed_xxxx",
+  "name": "",
+  "description": "", // or null
+  "emoji": "", // or null
+  "type": 0, // 0 = APPLICATION, 1 = EVENTS
+}]
+```
+</ResponseField>
+<ResponseField name="members" type="array">
+```json
+[{
+  "id": "user_xxxxx",
+  "username": "",
+  "icon": "", // or null
+}]
+```
+</ResponseField>
+</Expandable>
+</ResponseField>
+<RequestExample>
+```bash
+curl --location --request PATCH 'https://api.lawg.dev/v1/projects/:namespace' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "Updated Project Name",
+  "icon": "base64_encoded_icon"
+}'
+```
+</RequestExample>
+<ResponseExample>
+```json
+{
+  "success": true,
+  "data": {
+    "id": "project_xxx",
+    "namespace": "my-project",
+    "name": "Updated Project Name",
+    "icon": "https://cdn.lawg.dev/projects/project_xxx.png",
+    "tier": 0,
+    "stripe_id": null,
+    "feeds": [
+      {
+        "id": "feed_xxx",
+        "name": "My Feed",
+        "description": null,
+        "emoji": null,
+        "type": 0
+      }
+    ],
+    "members": [
+      {
+        "id": "user_xxx",
+        "username": "john",
+        "icon": null
+      }
+    ]
+  }
+}
+```
+</ResponseExample>

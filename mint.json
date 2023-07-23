@@ -71,15 +71,70 @@
     },
     {
       "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
+      "pages": [
+        "api-reference/authentication",
+        "api-reference/ratelimits",
+        "api-reference/errors",
+        "api-reference/ids"
+      ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "API v1",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "api-reference/v1/introduction",
+        {
+          "group": "Auth",
+          "pages": [
+            "api-reference/v1/auth/login",
+            "api-reference/v1/auth/signup",
+            "api-reference/v1/auth/logout"
+          ]
+        },
+        {
+          "group": "Projects",
+          "pages": [
+            "api-reference/v1/projects/introduction",
+            "api-reference/v1/projects/get",
+            "api-reference/v1/projects/create",
+            "api-reference/v1/projects/update",
+            "api-reference/v1/projects/delete",
+            {
+              "group": "Activity",
+              "pages": ["api-reference/v1/projects/activity/get"]
+            },
+            {
+              "group": "Insights",
+              "pages": [
+                "api-reference/v1/projects/insights/get",
+                "api-reference/v1/projects/insights/create",
+                "api-reference/v1/projects/insights/update",
+                "api-reference/v1/projects/insights/delete"
+              ]
+            },
+            {
+              "group": "Invitations",
+              "pages": [
+                "api-reference/v1/projects/invitations/get",
+                "api-reference/v1/projects/invitations/create",
+                "api-reference/v1/projects/invitations/delete",
+                "api-reference/v1/projects/invitations/put"
+              ]
+            },
+            {
+              "group": "Members",
+              "pages": ["api-reference/v1/projects/members/delete"]
+            }
+          ]
+        },
+        {
+          "group": "Users",
+          "pages": [
+            "api-reference/v1/users",
+            "api-reference/v1/users/create",
+            "api-reference/v1/users/update",
+            "api-reference/v1/users/delete"
+          ]
+        }
       ]
     }
   ],

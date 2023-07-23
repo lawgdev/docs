@@ -1,0 +1,63 @@
+---
+title: "Login"
+api: "POST https://api.lawg.dev/v1/auth/login"
+---
+
+<Warning>You can not be authenticated to access this route</Warning>
+
+### Body
+
+<ParamField body="username" type="string" required>
+  The username of the user you want to login as, this could also be an email
+</ParamField>
+
+<ParamField body="password" type="string" required>
+  The password of the user you want to login as
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful. `true` if successful, `false` if
+  not.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+
+The contents of the data object
+
+<Expandable title="Toggle object">
+
+<ResponseField name="token" type="string">
+  A generated session token. This is used to authenticate the user in future
+</ResponseField>
+
+</Expandable>
+
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://api.lawg.dev/v1/auth/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username": "",
+    "password": ""
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "token": "session_xxxxx"
+  }
+}
+```
+
+</ResponseExample>

@@ -1,22 +1,22 @@
 ---
 title: "Authentication"
-description: "Example overview page before API endpoints"
+description: "Authenticate to lawg's API."
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et eros iaculis tortor dapibus cursus. Curabitur quis sapien nec tortor dictum gravida.
+Theres two main ways to authenticate with lawg's API, through API tokens and sessions tokens.
 
-```bash
-'Authorization': 'Token <team_token>'
-```
+## Basic
+
+Session tokens are tokens that are generated upon logging in and signing up. These are generally only used for frontend purposes, and they will show up in the "Devices" tab of your user settings.
 
 ## API Tokens
 
-Nullam convallis mauris at nunc consectetur, ac imperdiet leo rutrum. Maecenas cursus purus a pellentesque blandit. Pellentesque vitae lacinia libero, non mollis metus.
+API tokens are tokens that are generated for API usage. These are generally used for backend purposes, and they will show up in the "Tokens" tab of your user settings. You can create as many API tokens as you want, and you can delete them at any time.
 
-Nam id ullamcorper urna, at rutrum enim. [Maecenas vulputate](/introduction) vehicula libero, vitae sodales augue pretium nec. Quisque a magna tempor, semper risus vel, fermentum nunc. Pellentesque fermentum interdum ex, eu convallis massa blandit sed. Aliquam bibendum ipsum vel laoreet auctor.
+## Usage
 
-### Permissions
+To use your token, you will need to provide the "Authorization" header with the value of "Bearer" and your token. For example:
 
-Etiam lobortis ut odio ut fermentum. Nunc odio velit, sollicitudin at consectetur id, tristique eget turpis. Aliquam at risus vitae dolor sodales venenatis. In hac habitasse platea dictumst.
-
-Aenean consequat diam eget mollis fermentum. [Quisque eu malesuada](/introduction) felis, non dignissim libero.
+```bash
+'Authorization': 'Bearer lawg_xxxxxxxx'
+```

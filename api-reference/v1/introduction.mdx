@@ -1,0 +1,49 @@
+---
+title: "Introduction"
+api: "GET https://api.lawg.dev/v1"
+---
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the call was successful. `true` if successful, `false` if
+  not.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+
+The contents of the data object
+
+<Expandable title="Toggle object">
+
+<ResponseField name="message" type="string">
+  Just a small message to show you you're on the track to logging your own logs
+  ;)
+</ResponseField>
+
+</Expandable>
+
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://api.lawg.dev/v1' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Token <token>'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "message": "...heeeellloooo from v1 api"
+  }
+}
+```
+
+</ResponseExample>
